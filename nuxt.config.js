@@ -32,7 +32,7 @@ export default {
   plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  omponents: [
+  components: [
     "~/components/templates",
     "~/components/atoms",
     "~/components/atoms/icons",
@@ -42,12 +42,18 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    "@nuxtjs/color-mode",
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
+
+  colorMode: {
+    preference: "light",
+    classSuffix: "",
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
