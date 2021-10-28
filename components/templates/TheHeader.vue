@@ -5,14 +5,7 @@
         Is <span class="text-strapi-purple">Strapi V4</span> ready?
       </h1>
       <h2
-        class="
-          text-gray-400
-          transition-colors
-          sm:text-lg
-          dark:text-gray-200
-          lg:text-xl
-          md:mt-2
-        "
+        class="text-gray-400 transition-colors  sm:text-lg dark:text-gray-200 lg:text-xl md:mt-2"
       >
         Follow the latest update from Strapi
       </h2>
@@ -20,14 +13,7 @@
 
     <div class="flex items-center mt-2 space-x-2 sm:mt-0 sm:ml-auto">
       <a
-        class="
-          w-6
-          h-6
-          transition-colors
-          cursor-pointer
-          sm:w-7 sm:h-7
-          hover:text-strapi-purple-dark
-        "
+        class="w-6 h-6 transition-colors cursor-pointer  sm:w-7 sm:h-7 hover:text-strapi-purple-dark"
         href="http://https://github.com/Stun3R/isstrapiv4ready"
         target="_blank"
         rel="noopener noreferrer"
@@ -35,15 +21,7 @@
         <GithubIcon />
       </a>
       <div
-        class="
-          w-8
-          h-8
-          transition-colors
-          cursor-pointer
-          sm:w-8 sm:h-8
-          lg:w-9 lg:h-9
-          hover:text-strapi-purple
-        "
+        class="w-8 h-8 transition-colors cursor-pointer  sm:w-8 sm:h-8 lg:w-9 lg:h-9 hover:text-strapi-purple"
         @click="toggleDark()"
       >
         <template v-if="isDark">
