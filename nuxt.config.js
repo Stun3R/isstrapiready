@@ -2,8 +2,8 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: true,
 
-  server: {
-    host: '0.0.0.0'
+  server: {
+    host: "0.0.0.0",
   },
 
   // Target: https://go.nuxtjs.dev/config-target
@@ -17,7 +17,7 @@ export default {
     },
     bodyAttrs: {
       class: [
-        "bg-gray-50 dark:bg-gray-900 text-gray-500 font-body dark:text-white transition-colors container",
+        "bg-gray-50 dark:bg-gray-900 text-gray-500 font-body dark:text-white transition-colors min-h-screen",
       ],
     },
     meta: [
@@ -30,7 +30,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["~/assets/css/poppins.css"],
+  css: ["~/assets/css/poppins.css", "~/assets/css/main.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],

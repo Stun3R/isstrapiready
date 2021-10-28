@@ -1,5 +1,7 @@
 <template>
-  <header class="flex flex-col mx-6 mt-8 sm:mx-8 md:mx-10 md:mt-10 sm:flex-row">
+  <header
+    class="container flex flex-col px-6 pt-8  sm:px-8 md:px-10 md:pt-10 sm:flex-row"
+  >
     <div>
       <h1 class="text-3xl font-bold sm:text-4xl lg:text-[2.5rem]">
         Is <span class="text-strapi-purple">Strapi V4</span> ready?
