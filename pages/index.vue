@@ -56,16 +56,14 @@
 <script>
 import axios from "axios";
 export default {
-  async asyncData({ payload, app }) {
+  async asyncData({ payload, $config }) {
     if (payload) return { ready: payload };
     else {
       const advancementsResponse = await axios.get(
-        `${process.env.STRAPI_URL}/advancements`
+        `${$config.strapiURL}/advancements`
       );
 
-      const pluginsResponse = await axios.get(
-        `${process.env.STRAPI_URL}/plugins`
-      );
+      const pluginsResponse = await axios.get(`${$config.strapiURL}/plugins`);
       return {
         advancements: advancementsResponse.data,
         plugins: pluginsResponse.data,

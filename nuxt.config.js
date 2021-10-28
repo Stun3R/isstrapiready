@@ -13,6 +13,10 @@ export default {
     color: "#9A4BFF",
   },
 
+  publicRuntimeConfig: {
+    strapiURL: process.env.STRAPI_URL || "http://localhost:1337/v1",
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Is Strapi V4 Ready?",
