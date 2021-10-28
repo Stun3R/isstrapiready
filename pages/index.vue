@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="flex flex-col">
     <TheHeader />
     <section
-      class="grid grid-cols-1 mx-6 mt-10  md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 justify-items-center"
+      class="container grid grid-cols-1 px-6 mt-10  sm:px-8 md:px-10 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 justify-items-center"
     >
       <AdvancementCard
         v-for="{ id, attributes } in advancements.data"
@@ -13,7 +13,7 @@
         class="w-full max-w-sm"
       />
     </section>
-    <section class="mx-6 mt-10">
+    <section class="container px-6 mt-10 sm:px-8 md:px-10">
       <div class="flex">
         <PuzzleIcon class="w-6 h-6 my-auto" />
         <h1 class="ml-2 text-2xl font-bold">Plugins compatibility</h1>
@@ -49,6 +49,7 @@
         />
       </div>
     </section>
+    <TheFooter />
   </div>
 </template>
 
