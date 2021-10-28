@@ -39,7 +39,7 @@ module.exports = {
       orange: colors.orange,
       strapi: {
         purple: {
-          light: "#A06AFF",
+          light: "#8C4BFF",
           DEFAULT: "#9A4BFF",
           dark: "#773AE7",
         },
