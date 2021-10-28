@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.15.1",
+    "easy-circular-progress": "^1.0.4",
     "nuxt": "^2.15.7"
   },
   "devDependencies": {

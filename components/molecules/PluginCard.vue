@@ -14,10 +14,13 @@
       group
       hover:bg-strapi-purple-light
       transition-colors
+      select-none
     "
   >
     <div class="flex justify-between">
-      <h3 class="font-bold transition-colors group-hover:text-white">
+      <h3
+        class="font-bold text-gray-500 transition-colors group-hover:text-white"
+      >
         {{ name }}
       </h3>
       <LinkIcon
@@ -76,5 +79,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

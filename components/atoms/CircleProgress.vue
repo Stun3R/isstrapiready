@@ -1,27 +1,27 @@
 <template>
   <div class="relative inline-flex items-center justify-center">
-    <svg v-bind="svgAttr">
+    <svg class="w-24 h-24 -rotate-90">
       <circle
         class="text-white opacity-20"
-        :stroke-width="borderWidth"
+        stroke-width="8"
         stroke="currentColor"
         fill="transparent"
         :r="circleRadius()"
-        :cx="size"
-        :cy="size"
+        cx="50%"
+        cy="50%"
       />
       <circle
         class="text-white"
         style="transition: stroke-dashoffset 400ms"
-        :stroke-width="borderWidth"
+        stroke-width="8"
         :stroke-dasharray="circumference"
         :stroke-dashoffset="offset"
         stroke-linecap="round"
         stroke="currentColor"
         fill="transparent"
         :r="circleRadius()"
-        :cx="size"
-        :cy="size"
+        cx="50%"
+        cy="50%"
       />
     </svg>
     <span class="absolute text-lg font-medium text-white">
@@ -32,42 +32,25 @@
 
 <script>
 export default {
-  data() {
-    return {
-      currentPercent: 0,
-      offset: 2 * Math.PI * this.circleRadius(),
-      circumference: 2 * Math.PI * this.circleRadius(),
-    };
-  },
   props: {
     percent: {
       type: Number,
       default: 50,
     },
-    size: {
-      type: Number,
-      default: 100,
-    },
-    borderWidth: {
-      type: Number,
-      default: 8,
-    },
   },
-  computed: {
-    svgAttr() {
-      return {
-        class: "overflow-visible -rotate-90",
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: `${this.size / 2} ${this.size / 2} ${this.size} ${this.size}`,
-      };
-    },
+  data() {
+    return {
+      currentPercent: 0,
+      circumference: 2 * Math.PI * this.circleRadius(),
+      offset: 2 * Math.PI * this.circleRadius(),
+    };
   },
   mounted() {
     this.updatePercent();
   },
   methods: {
     circleRadius() {
-      return (this.size - this.borderWidth) * 0.5;
+      return 40;
     },
     updatePercent() {
       const circumference = 2 * Math.PI * this.circleRadius();

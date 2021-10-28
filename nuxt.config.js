@@ -9,6 +9,10 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
 
+  loading: {
+    color: "#9A4BFF",
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Is Strapi V4 Ready?",

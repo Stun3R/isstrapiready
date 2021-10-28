@@ -11,14 +11,14 @@
       <div :class="`flex p-3.5 text-white rounded-full w-14 h-14 ${color}`">
         <BookIcon v-if="type === 'documentation'" class="m-auto" />
         <CodeIcon v-if="type === 'core'" class="m-auto" />
-        <PuzzleIcon v-if="type === 'core_plugins'" class="-mt-1 -ml-0.5" />
+        <PuzzleIcon
+          v-if="type === 'core_plugins'"
+          class="-mt-0.5 -ml-0.5 w-full h-full"
+        />
       </div>
       <p class="mt-3 text-xl font-medium text-white">{{ title }}</p>
     </div>
-    <CircleProgress
-      :percent="percent"
-      class="w-20 h-20 my-auto ml-auto md:w-24 md:h-24"
-    />
+    <CircleProgress :percent="percent" class="w-24 h-24 my-auto ml-auto" />
   </article>
 </template>
 
