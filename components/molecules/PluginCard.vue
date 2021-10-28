@@ -5,10 +5,8 @@
     rel="noopener noreferrer"
     class="
       w-full
-      px-3.5
+      px-5
       py-[18px]
-      sm:px-4
-      md:px-5
       space-y-4
       bg-white
       rounded-lg
@@ -33,7 +31,7 @@
         {{ `@${author}` }}
       </p>
       <p
-        :class="`p-2 text-xs font-semibold uppercase transition-colors rounded  sm:text-sm ${stateColor}`"
+        :class="`p-2 text-sm font-semibold uppercase transition-colors rounded ${stateColor}`"
       >
         {{ state }}
       </p>
