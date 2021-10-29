@@ -1,0 +1,38 @@
+name: "🧩 Plugin request"
+description: Ask us to add your plugin to the list
+title: "[PLUGIN REQUEST] <title>"
+labels: [plugins]
+body:
+  - type: input
+    id: plugin-name
+    attributes:
+      label: Name
+      description: "Name of your plugin as it is used to install it"
+      placeholder: "Example: strapi-plugin-json-schema"
+    validations:
+      required: true
+  - type: input
+    id: plugin-link
+    attributes:
+      label: Link
+      description: "Please provide a link where we can find your plugin, it can be `Github` or `NPM`"
+    validations:
+      required: true
+  - type: dropdown
+    id: plugin-state
+    attributes:
+      label: Status
+      description: "Tell us if your plugin is either ready to use in v4 or unsupported. If it is in progress or you don't know, tell us anyway"
+      options:
+      - Unknown
+      - Work In Progess
+      - Ready
+      - Unsupported
+    validations:
+      required: true
+  - type: input
+    id: plugin-author
+    attributes:
+      label: Author
+      description: "Even if you are not the author of this plugin, please give us his name so we can contact it"
+      placeholder: "Example: @Stun3R"

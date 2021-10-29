@@ -39,6 +39,7 @@
         "
       />
       <div class="grid gap-y-4 md:grid-cols-2 md:gap-x-4 lg:grid-cols-3">
+        <RequestPlugin />
         <PluginCard
           v-for="{ id, attributes } in plugins.data"
           :key="id"
