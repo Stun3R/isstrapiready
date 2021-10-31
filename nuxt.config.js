@@ -19,7 +19,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Is Strapi V4 Ready?",
+    title: "Is Strapi v4 Ready?",
     htmlAttrs: {
       lang: "en",
     },
