@@ -1,3 +1,6 @@
+import axios from "axios";
+const url = "https://isstrapiv4ready.com";
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: true,
@@ -29,10 +32,27 @@ export default {
       ],
     },
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" },
+      { hid: "charset", charset: "utf-8" },
+      {
+        hid: "viewport",
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+      },
+      // Open Graph
+      { hid: "og:type", property: "og:type", content: "website" },
+      { hid: "og:url", property: "og:url", content: url },
+      { hid: "og:image", property: "og:image", content: `${url}/preview.png` },
+      // Twitter Card
+      {
+        hid: "twitter:card",
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      {
+        hid: "twitter:image",
+        name: "twitter:image",
+        content: `${url}/preview.png`,
+      },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
@@ -57,6 +77,8 @@ export default {
     "@nuxtjs/color-mode",
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
+    // https://pwa.nuxtjs.org
+    "@nuxtjs/pwa",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -65,6 +87,37 @@ export default {
   colorMode: {
     preference: "light",
     classSuffix: "",
+  },
+
+  pwa: {
+    manifest: {
+      name: "Is Strapi v4 Ready?",
+      description:
+        "Discover the advancement of Strapi for v4 and the list of compatible plugins",
+      theme_color: "#9A4BFF",
+    },
+  },
+
+  generate: {
+    crawler: true,
+    fallback: true,
+    routes: async () => {
+      const advancements = await axios.get(
+        `${process.env.STRAPI_URL}/advancements`
+      );
+
+      const plugins = await axios.get(`${process.env.STRAPI_URL}/plugins`);
+
+      return [
+        {
+          route: "/",
+          payload: {
+            advancements: advancements.data,
+            plugins: plugins.data,
+          },
+        },
+      ];
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
