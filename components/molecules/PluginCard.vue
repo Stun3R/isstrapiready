@@ -67,7 +67,7 @@ export default {
       switch (this.state) {
         case "unknown":
           return "bg-gray-100 text-gray-400";
-        case "pending":
+        case "wip":
           return "bg-orange-50 text-orange-500";
         case "ready":
           return "group-hover:bg-white text-strapi-purple-dark bg-strapi-purple-light bg-opacity-10";
