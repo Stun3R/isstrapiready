@@ -12,6 +12,12 @@
         :title="attributes.title"
         class="w-full max-w-sm"
       />
+      <AdvancementCard
+        :percent="pluginAdvancement"
+        type="plugins"
+        title="Listed Plugins"
+        class="w-full max-w-sm"
+      />
     </section>
     <section class="container px-6 mt-10 sm:px-8 md:px-10">
       <div class="flex">
@@ -245,6 +251,15 @@ export default {
       );
       plugins = _.orderBy(plugins, [this.sortBy.key], [this.sortBy.order]);
       return plugins;
+    },
+    pluginAdvancement() {
+      const count = this.plugins.data.reduce(
+        (count, plugin) =>
+          plugin.attributes.state === "ready" ? ++count : count,
+        0
+      );
+
+      return Math.round((count / this.plugins.meta.pagination.total) * 100);
     },
   },
   methods: {

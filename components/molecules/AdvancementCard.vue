@@ -10,9 +10,9 @@
     <div>
       <div :class="`flex p-3.5 text-white rounded-full w-14 h-14 ${color}`">
         <BookIcon v-if="type === 'documentation'" class="m-auto" />
-        <CodeIcon v-if="type === 'core'" class="m-auto" />
+        <CodeIcon v-if="type === 'codebase'" class="m-auto" />
         <PuzzleIcon
-          v-if="type === 'core_plugins'"
+          v-if="type === 'plugins'"
           class="-mt-0.5 -ml-0.5 w-full h-full"
         />
       </div>
@@ -48,9 +48,9 @@ export default {
       switch (this.type) {
         case "documentation":
           return "from-strapi-purple-light to-strapi-purple";
-        case "core":
+        case "codebase":
           return "from-strapi-green-light to-strapi-green";
-        case "core_plugins":
+        case "plugins":
           return "from-strapi-blue-light to-strapi-blue";
       }
     },
@@ -58,9 +58,9 @@ export default {
       switch (this.type) {
         case "documentation":
           return "bg-strapi-purple-dark";
-        case "core":
+        case "codebase":
           return "bg-strapi-green-dark";
-        case "core_plugins":
+        case "plugins":
           return "bg-strapi-blue-dark";
       }
     },

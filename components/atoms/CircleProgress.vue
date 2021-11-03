@@ -67,11 +67,6 @@ export default {
           if (this.currentPercent >= to) {
             clearInterval(counter);
           }
-        } else {
-          this.currentPercent -= 1;
-          if (this.currentPercent <= to) {
-            clearInterval(counter);
-          }
         }
       }, delay);
     },
