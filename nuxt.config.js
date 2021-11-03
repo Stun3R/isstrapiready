@@ -79,6 +79,10 @@ export default {
     "@nuxtjs/tailwindcss",
     // https://pwa.nuxtjs.org
     "@nuxtjs/pwa",
+    // https://github.com/nuxt-community/robots-module
+    "@nuxtjs/robots",
+    // https://sitemap.nuxtjs.org/fr
+    "@nuxtjs/sitemap",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -118,6 +122,29 @@ export default {
         },
       ];
     },
+  },
+
+  // robots.txt generation
+  robots: () => {
+    if (process.env.CONTEXT !== "production") return { Disallow: "/" };
+    return {
+      Sitemap: "https://isstrapiready.com/sitemap.xml",
+    };
+  },
+
+  // Sitemap generation
+  sitemap: () => {
+    if (process.env.CONTEXT !== "production") return false;
+    return {
+      path: "/sitemap.xml",
+      hostname: "https://isstrapiready.com",
+      cacheTime: 1000 * 60 * 15,
+      trailingSlash: true,
+      gzip: true,
+      defaults: {
+        lastmod: new Date(),
+      },
+    };
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
