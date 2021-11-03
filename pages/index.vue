@@ -259,7 +259,9 @@ export default {
         0
       );
 
-      return Math.round((count / this.plugins.meta.pagination.total) * 100);
+      return Math.round(
+        (count / this.plugins.meta.pagination.total || 0) * 100
+      );
     },
   },
   methods: {
