@@ -22,7 +22,7 @@
     <section class="container px-6 mt-10 sm:px-8 md:px-10">
       <div class="flex">
         <PuzzleIcon class="w-6 h-6 my-auto" />
-        <h1 class="ml-2 text-2xl font-bold">Plugins compatibility</h1>
+        <h2 class="ml-2 text-2xl font-bold">Plugins compatibility</h2>
       </div>
       <div class="mb-5">
         <!-- Search -->
@@ -213,7 +213,7 @@ const SORTS = [
 ];
 export default {
   async asyncData({ payload, $config }) {
-    if (payload) return { ready: payload };
+    if (payload) return { ...payload };
     else {
       const advancementsResponse = await axios.get(
         `${$config.strapiURL}/advancements`
@@ -233,6 +233,32 @@ export default {
       sortBy: SORTS[0],
       FILTERS,
       filterBy: [],
+    };
+  },
+  head() {
+    const title = "Is Strapi v4 Ready?";
+    const description =
+      "Discover the advancement of Strapi for v4 and the list of compatible plugins.";
+
+    return {
+      title,
+      meta: [
+        { hid: "description", name: "description", content: description },
+        { hid: "og:site_name", property: "og:site_name", content: title },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: description,
+        },
+        // Twitter Card
+        { hid: "twitter:title", name: "twitter:title", content: title },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: description,
+        },
+        { hid: "twitter:image:alt", name: "twitter:image:alt", content: title },
+      ],
     };
   },
   computed: {
