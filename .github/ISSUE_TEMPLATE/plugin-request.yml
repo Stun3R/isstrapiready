@@ -34,5 +34,5 @@ body:
     id: plugin-author
     attributes:
       label: Author
-      description: "Even if you are not the author of this plugin, please give us his name so we can contact it"
+      description: "Even if you are not the author of this plugin, please give us his Github name so we can contact it"
       placeholder: "Example: @Stun3R"

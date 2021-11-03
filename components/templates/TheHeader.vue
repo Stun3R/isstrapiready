@@ -18,7 +18,7 @@
     <div class="flex items-center mt-2 space-x-2 sm:mt-0 sm:ml-auto">
       <a
         class="w-6 h-6 transition-colors cursor-pointer  hover:text-strapi-purple-dark"
-        href="https://github.com/Stun3R/isstrapiv4ready"
+        href="https://github.com/Stun3R/isstrapiready"
         target="_blank"
         rel="noopener noreferrer"
       >

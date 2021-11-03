@@ -14,7 +14,7 @@
       select-none
       flex
     "
-    href="https://github.com/Stun3R/isstrapiv4ready/issues/new?assignees=&labels=plugins&template=plugin-request.yml&title=%5BPLUGIN+REQUEST%5D+%3Ctitle%3E"
+    href="https://github.com/Stun3R/isstrapiready/issues/new?assignees=&labels=plugins&template=plugin-request.yml&title=%5BPLUGIN+REQUEST%5D+%3Ctitle%3E"
     target="_blank"
     rel="noopener noreferrer"
   >
