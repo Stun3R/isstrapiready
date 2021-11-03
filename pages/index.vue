@@ -18,77 +18,49 @@
         <PuzzleIcon class="w-6 h-6 my-auto" />
         <h1 class="ml-2 text-2xl font-bold">Plugins compatibility</h1>
       </div>
-      <div class="flex flex-wrap md:mb-5">
+      <div class="mb-5">
         <!-- Search -->
-        <div class="relative h-10 my-3 rounded-md">
-          <div
-            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none "
-          >
-            <SearchIcon class="w-4 h-4" />
-          </div>
-          <input
-            id="search"
-            v-model="search"
-            type="text"
-            name="search"
-            class="
-              h-10
-              border-[1px] border-solid border-gray-300
-              px-8
-              py-1
-              text-sm
-              rounded-md
-              w-48
-              md:w-60
-            "
-            placeholder="Search for a plugin..."
-          />
-          <div
-            v-show="search.length > 0"
-            @click="search = ''"
-            class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer "
-          >
-            <CloseIcon class="w-4 h-4" />
-          </div>
-        </div>
-
-        <!-- sort -->
-        <div
-          class="relative inline-block my-auto ml-auto cursor-pointer  group sm:order-last"
-        >
-          <span
-            class="flex transition-colors group-hover:text-strapi-purple-dark"
-            >{{ sortBy.name }}<ChevronIcon class="w-5 h-5 my-auto ml-2"
-          /></span>
-          <div
-            class="absolute right-0 z-10 hidden py-1 text-sm bg-white rounded-md shadow  group-hover:block whitespace-nowrap"
-          >
-            <p
-              v-for="sort in SORTS"
-              :key="sort.name"
-              @click="sortBy = sort"
-              class="px-6 py-2 transition-colors cursor-pointer  hover:bg-blueGray-100"
-              :class="{
-                'bg-strapi-purple-light bg-opacity-10':
-                  sort.name === sortBy.name,
-              }"
+        <div class="flex">
+          <div class="relative h-10 my-3 rounded-md dark:text-gray-600">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none "
             >
-              {{ sort.name }}
-            </p>
-          </div>
-        </div>
-
-        <!-- filter -->
-        <div class="flex mb-5 text-sm md:text-base sm:mb-0 sm:mx-4">
-          <div class="my-auto cursor-pointer group">
-            <FilterIcon
-              class="w-6 h-6 my-auto mr-2 group-hover:text-strapi-purple-dark"
+              <SearchIcon class="w-4 h-4" />
+            </div>
+            <input
+              id="search"
+              v-model="search"
+              type="text"
+              name="search"
+              class="
+                h-10
+                border-[1px] border-solid border-gray-300
+                px-8
+                py-1
+                text-sm
+                rounded-md
+                w-40
+                sm:w-60
+              "
+              placeholder="Search for a plugin..."
             />
             <div
-              class="absolute z-10 hidden px-4 py-2 text-sm bg-white rounded-md shadow  whitespace-nowrap group-hover:block"
+              v-show="search.length > 0"
+              @click="search = ''"
+              class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer "
+            >
+              <CloseIcon class="w-4 h-4" />
+            </div>
+          </div>
+          <div class="relative my-auto cursor-pointer group">
+            <FilterIcon
+              class="w-6 h-6 mx-auto ml-2  md:my-auto group-hover:text-strapi-purple-dark dark:group-hover:text-strapi-purple-light"
+            />
+            <div
+              class="absolute z-10 hidden px-4 text-sm bg-white rounded-md shadow  whitespace-nowrap group-hover:block"
             >
               <div
-                class="flex my-2 cursor-pointer"
+                class="my-4 cursor-pointer"
                 v-for="filter in FILTERS"
                 :key="filter.name"
                 @click="setFilter(filter)"
@@ -110,8 +82,37 @@
             </div>
           </div>
 
-          <div class="flex" v-if="filterBy.length > 0">
-            <p class="my-auto">
+          <!-- sort -->
+          <div
+            class="relative justify-end inline-block my-auto ml-auto cursor-pointer  group"
+          >
+            <span
+              class="flex transition-colors  group-hover:text-strapi-purple-dark dark:group-hover:text-strapi-purple-light w-max"
+              >{{ sortBy.name }}<ChevronIcon class="w-5 h-5 my-auto ml-2"
+            /></span>
+            <div
+              class="absolute right-0 z-10 hidden py-1 text-sm bg-white rounded-md shadow  group-hover:block whitespace-nowrap dark:text-gray-600"
+            >
+              <p
+                v-for="sort in SORTS"
+                :key="sort.name"
+                @click="sortBy = sort"
+                class="px-6 py-2 transition-colors cursor-pointer  hover:bg-blueGray-100"
+                :class="{
+                  'bg-strapi-purple-light bg-opacity-10':
+                    sort.name === sortBy.name,
+                }"
+              >
+                {{ sort.name }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- filter -->
+        <div class="flex mb-5 text-sm md:text-base">
+          <div class="contents" v-if="filterBy.length > 0">
+            <p class="flex-none mt-2 mb-auto sm:my-auto sm:mt-auto">
               {{ filterBy.length }}
               {{ filterBy.length > 1 ? "filters" : "filter" }}
             </p>
@@ -119,25 +120,28 @@
               class="
                 h-5
                 mx-4
-                my-auto
+                mb-auto
+                mt-2
+                sm:my-auto sm:mt-auto
                 border-l-[1px] border-solid border-blueGray-400
               "
             ></span>
-            <div class="flex flex-wrap space-x-2">
-              <p
-                v-for="(filter, index) in filterBy"
-                :key="filter.name"
-                :class="`flex p-2 my-auto text-sm font-semibold uppercase transition-colors rounded ${filterColor(
-                  filter.value
-                )} `"
-              >
-                {{ filter.name }}
-                <CloseIcon
-                  class="w-4 h-4 my-auto ml-2 cursor-pointer text-blueGray-600"
-                  @click.native="filterBy.splice(index, 1)"
-                />
-              </p>
-            </div>
+          </div>
+
+          <div class="flex flex-wrap space-x-2 gap-y-2">
+            <p
+              v-for="(filter, index) in filterBy"
+              :key="filter.name"
+              :class="`flex p-2 my-auto text-sm font-semibold uppercase transition-colors rounded ${filterColor(
+                filter.value
+              )} `"
+            >
+              {{ filter.name }}
+              <CloseIcon
+                class="w-4 h-4 my-auto ml-2 cursor-pointer text-blueGray-600"
+                @click.native="filterBy.splice(index, 1)"
+              />
+            </p>
           </div>
         </div>
       </div>
@@ -251,7 +255,7 @@ export default {
         case "wip":
           return "bg-orange-50 text-orange-500";
         case "ready":
-          return "text-strapi-purple-dark bg-strapi-purple-light bg-opacity-10";
+          return "text-strapi-purple-dark bg-strapi-purple-light bg-opacity-10 dark:bg-white";
         case "unsupported":
           return "text-red-600 bg-red-100";
       }
