@@ -29,10 +29,10 @@
         @click="toggleDark()"
       >
         <template v-if="isDark">
-          <MoonIcon />
+          <MoonIcon class="w-7 h-7" />
         </template>
         <template v-else>
-          <SunIcon />
+          <SunIcon class="w-8 h-8" />
         </template>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div tabindex="0" class="flex flex-col">
     <TheHeader />
     <section
       class="container grid grid-cols-1 px-6 mt-10  sm:px-8 md:px-10 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 justify-items-center"
