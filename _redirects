@@ -1,0 +1,4 @@
+# [NETLIFY] Redirect default Netlify subdomain to primary domain
+https://isstrapiready.netlify.app/* https://isstrapiready.com/ 301!
+# [SUBDOMAIN] Redirect www.isstrapiready.com to isstrapiready.com
+https://www.isstrapiready.fr/* https://isstrapiready.com/ 301!
