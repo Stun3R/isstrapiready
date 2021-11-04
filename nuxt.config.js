@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://isstrapiv4ready.com";
+const url = "https://isstrapiready.com";
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
