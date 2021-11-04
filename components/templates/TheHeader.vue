@@ -1,17 +1,19 @@
 <template>
   <header
-    class="container flex flex-col px-6 pt-8  sm:px-8 md:px-10 md:pt-10 sm:flex-row"
+    class="container flex flex-col px-6 pt-8  sm:px-8 xl:px-32 xl:pt-14 sm:flex-row"
   >
     <div>
       <nuxt-link to="/">
-        <h1 class="text-3xl font-bold sm:text-4xl lg:text-[2.5rem]">
-          Is <span class="text-strapi-purple">Strapi v4</span> ready?
+        <h1 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
+          Is
+          <span class="text-purple-500 dark:text-purple-400">Strapi v4</span>
+          ready?
         </h1>
       </nuxt-link>
       <h2
-        class="text-gray-400 transition-colors  sm:text-lg dark:text-gray-200 md:mt-1"
+        class="mt-3 text-purple-900 transition-colors  sm:text-xl dark:text-purple-100"
       >
-        Follow the latest update from Strapi
+        The future of Strapi is almost here
       </h2>
     </div>
 

@@ -1,55 +1,47 @@
 <template>
-  <div tabindex="0" class="flex flex-col">
+  <div class="flex flex-col">
     <TheHeader />
-    <section
-      class="container grid grid-cols-1 px-6 mt-10  sm:px-8 md:px-10 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 justify-items-center"
-    >
-      <AdvancementCard
-        v-for="{ id, attributes } in advancements.data"
-        :key="id"
-        :percent="attributes.percent"
-        :type="attributes.type"
-        :title="attributes.title"
-        class="w-full max-w-sm"
-      />
-      <AdvancementCard
-        :percent="pluginAdvancement"
-        type="plugins"
-        title="Listed Plugins"
-        class="w-full max-w-sm"
-      />
+
+    <section class="container px-6 sm:px-8 xl:px-32 pt-14">
+      <h2 class="mb-3 ml-2 text-3xl font-bold">Overview</h2>
+      <div
+        class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 justify-items-center"
+      >
+        <AdvancementCard
+          v-for="{ id, attributes } in advancements.data"
+          :key="id"
+          :percent="attributes.percent"
+          :type="attributes.type"
+          :title="attributes.title"
+          class="w-full max-w-sm"
+        />
+        <AdvancementCard
+          :percent="pluginAdvancement"
+          type="plugins"
+          title="Listed Plugins"
+          class="w-full max-w-sm"
+        />
+      </div>
     </section>
-    <section class="container px-6 mt-10 sm:px-8 md:px-10">
+
+    <section class="container px-6 sm:px-8 md:px-10 xl:px-32 pt-14">
       <div class="flex">
         <PuzzleIcon class="w-6 h-6 my-auto" />
-        <h2 class="ml-2 text-2xl font-bold">Plugins compatibility</h2>
+        <h2 class="ml-2 text-3xl font-bold">Plugins</h2>
       </div>
       <div class="mb-5">
-        <!-- Search -->
-        <div class="flex">
-          <div class="relative h-10 my-3 rounded-md dark:text-gray-600">
-            <div
-              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none "
-            >
-              <SearchIcon class="w-4 h-4" />
-            </div>
+        <!-- search -->
+        <div class="flex flex-col sm:flex-row">
+          <div class="relative h-10 my-3 rounded text-blueGray-600">
             <input
               id="search"
               v-model="search"
               type="text"
               name="search"
-              class="
-                h-10
-                border-[1px] border-solid border-gray-300
-                px-8
-                py-1
-                text-sm
-                rounded-md
-                w-40
-                sm:w-60
-              "
-              placeholder="Search for a plugin..."
+              class="w-full h-10 py-1 pl-4 pr-8 text-sm rounded  search-shadow sm:w-60"
+              placeholder="Search"
             />
+
             <div
               v-show="search.length > 0"
               @click="search = ''"
@@ -57,65 +49,127 @@
             >
               <CloseIcon class="w-4 h-4" />
             </div>
-          </div>
-          <div class="relative my-auto cursor-pointer group">
-            <FilterIcon
-              class="w-6 h-6 mx-auto ml-2  md:my-auto group-hover:text-strapi-purple-dark dark:group-hover:text-strapi-purple-light"
-            />
             <div
-              class="absolute z-10 hidden px-4 text-sm bg-white rounded-md shadow  whitespace-nowrap group-hover:block"
+              v-show="search.length === 0"
+              class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none "
             >
-              <div
-                class="my-4 cursor-pointer"
-                v-for="filter in FILTERS"
-                :key="filter.name"
-                @click="setFilter(filter)"
-              >
-                <input
-                  class="filter-checkbox"
-                  type="checkbox"
-                  name="type"
-                  :checked="filterBy.indexOf(filter) !== -1"
-                />
-                <label
-                  :class="`p-2 text-xs cursor-pointer font-semibold uppercase transition-colors rounded ${filterColor(
-                    filter.value
-                  )} `"
-                >
-                  {{ filter.name }}
-                </label>
-              </div>
+              <SearchIcon class="w-4 h-4" />
             </div>
           </div>
 
-          <!-- sort -->
-          <div
-            class="relative justify-end inline-block my-auto ml-auto cursor-pointer  group"
-          >
-            <span
-              class="flex transition-colors  group-hover:text-strapi-purple-dark dark:group-hover:text-strapi-purple-light w-max"
-              >{{ sortBy.name }}<ChevronIcon class="w-5 h-5 my-auto ml-2"
-            /></span>
-            <div
-              class="absolute right-0 z-10 hidden py-1 text-sm bg-white rounded-md shadow  group-hover:block whitespace-nowrap dark:text-gray-600"
-            >
-              <p
-                v-for="sort in SORTS"
-                :key="sort.name"
-                @click="sortBy = sort"
-                class="px-6 py-2 transition-colors cursor-pointer  hover:bg-blueGray-100"
-                :class="{
-                  'bg-strapi-purple-light bg-opacity-10':
-                    sort.name === sortBy.name,
-                }"
+          <!-- filter -->
+          <div class="flex justify-between w-full">
+            <div class="relative my-auto cursor-pointer sm:ml-4 group">
+              <button
+                @click="visible.filter = !visible.filter"
+                @blur="visible.filter = false"
+                class="
+                  flex
+                  px-3
+                  py-2.5
+                  text-sm
+                  bg-white
+                  rounded
+                  text-blueGray-500
+                  search-shadow
+                  w-max
+                "
               >
-                {{ sort.name }}
-              </p>
+                Filters
+                <ChevronIcon
+                  class="w-5 h-5 my-auto ml-2 text-purple-500 rotate-180 fill-current stroke-current "
+                />
+              </button>
+              <ul
+                role="listbox"
+                :class="{
+                  'opacity-0': !visible.filter,
+                  'opacity-100': visible.filter,
+                }"
+                class="absolute left-0 z-10 px-4 text-sm transition-opacity bg-white rounded-md shadow  top-12 whitespace-nowrap"
+              >
+                <li
+                  role="option"
+                  class="my-4 cursor-pointer"
+                  v-for="filter in FILTERS"
+                  :key="filter.name"
+                  @click="setFilter(filter)"
+                >
+                  <input
+                    class="filter-checkbox"
+                    type="checkbox"
+                    name="type"
+                    :checked="filterBy.indexOf(filter) !== -1"
+                  />
+                  <label
+                    :class="`px-2 py-1 text-xs cursor-pointer font-semibold uppercase transition-colors tracking-widest rounded ${filterColor(
+                      filter.value
+                    )} `"
+                  >
+                    {{ filter.name }}
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            <!-- sort -->
+            <div
+              class="relative justify-end inline-block my-auto ml-auto text-sm cursor-pointer "
+            >
+              <button
+                @click="visible.sort = !visible.sort"
+                @blur="visible.sort = false"
+                class="
+                  flex
+                  px-3
+                  py-2.5
+                  transition-colors
+                  bg-white
+                  rounded
+                  text-blueGray-500
+                  search-shadow
+                  group-hover:text-purple-500
+                  w-max
+                "
+              >
+                Sort by: {{ sortBy.name }}
+                <ChevronIcon
+                  class="w-5 h-5 my-auto ml-2 text-purple-500 rotate-180 fill-current stroke-current "
+                />
+              </button>
+              <ul
+                role="listbox"
+                :class="{
+                  'opacity-0': !visible.sort,
+                  'opacity-100': visible.sort,
+                }"
+                class="absolute left-0 right-0 z-10 p-2 text-gray-700 transition-opacity bg-white rounded  top-12 search-shadow whitespace-nowrap"
+              >
+                <li
+                  v-for="sort in SORTS"
+                  :key="sort.name"
+                  @click="sortBy = sort"
+                  role="option"
+                  class="
+                    px-6
+                    py-2
+                    transition-colors
+                    cursor-pointer
+                    hover:bg-[#f5f8ff] hover:text-blueGray-500
+                    rounded
+                  "
+                  :class="{
+                    'bg-[#f5f8ff]': sort.name === sortBy.name,
+                  }"
+                >
+                  {{ sort.name }}
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <!-- filter -->
+        <!-- filter list -->
         <div class="flex mb-5 text-sm md:text-base">
           <div class="contents" v-if="filterBy.length > 0">
             <p class="flex-none mt-2 mb-auto sm:my-auto sm:mt-auto">
@@ -131,20 +185,20 @@
                 sm:my-auto sm:mt-auto
                 border-l-[1px] border-solid border-blueGray-400
               "
-            ></span>
+            />
           </div>
 
           <div class="flex flex-wrap space-x-2 gap-y-2">
             <p
               v-for="(filter, index) in filterBy"
               :key="filter.name"
-              :class="`flex p-2 my-auto text-sm font-semibold uppercase transition-colors rounded ${filterColor(
+              :class="`flex p-2 my-auto font-semibold uppercase transition-colors text-xs tracking-widest rounded ${filterColor(
                 filter.value
               )} `"
             >
               {{ filter.name }}
               <CloseIcon
-                class="w-4 h-4 my-auto ml-2 cursor-pointer text-blueGray-600"
+                class="w-3 h-3 my-auto ml-2 text-gray-700 cursor-pointer"
                 @click.native="filterBy.splice(index, 1)"
               />
             </p>
@@ -233,6 +287,10 @@ export default {
       sortBy: SORTS[0],
       FILTERS,
       filterBy: [],
+      visible: {
+        filter: false,
+        sort: false,
+      },
     };
   },
   head() {
@@ -294,13 +352,13 @@ export default {
     filterColor(value) {
       switch (value) {
         case "unknown":
-          return "bg-gray-100 text-gray-400";
+          return "bg-gray-200 text-gray-700";
         case "wip":
-          return "bg-orange-50 text-orange-500";
+          return "bg-orange-100 text-orange-500";
         case "ready":
-          return "text-strapi-purple-dark bg-strapi-purple-light bg-opacity-10 dark:bg-white";
+          return "text-green-500 bg-green-100";
         case "unsupported":
-          return "text-red-600 bg-red-100";
+          return "text-red-500 bg-red-100";
       }
     },
     setFilter(filter) {
@@ -316,6 +374,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.search-shadow {
+  box-shadow: 0px 1px 4px rgba(26, 26, 67, 0.1);
+}
+
 .filter {
   &-checkbox {
     @apply w-[18px] h-[18px] border border-gray-400 rounded-md appearance-none cursor-pointer my-auto mr-3;
