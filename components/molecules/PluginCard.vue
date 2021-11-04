@@ -15,6 +15,7 @@
       hover:bg-strapi-purple-light
       transition-colors
       select-none
+      min-h-[7rem]
     "
   >
     <div class="flex justify-between">

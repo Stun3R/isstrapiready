@@ -13,6 +13,7 @@
       transition-colors
       select-none
       flex
+      min-h-[7rem]
     "
     href="https://github.com/Stun3R/isstrapiready/issues/new?assignees=&labels=plugins&template=plugin-request.yml&title=%5BPLUGIN+REQUEST%5D+%3Ctitle%3E"
     target="_blank"

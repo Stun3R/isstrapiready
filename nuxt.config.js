@@ -22,7 +22,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Is Strapi v4 Ready?",
+    title: "Is Strapi Ready?",
     htmlAttrs: {
       lang: "en",
     },
@@ -95,7 +95,7 @@ export default {
 
   pwa: {
     manifest: {
-      name: "Is Strapi v4 Ready?",
+      name: "Is Strapi Ready?",
       description:
         "Discover the advancement of Strapi for v4 and the list of compatible plugins",
       theme_color: "#1f1d80",
