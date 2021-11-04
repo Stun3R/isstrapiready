@@ -1,69 +1,36 @@
-# is-strapi-v4-ready
+[![Is Strapi Ready?](https://isstrapiready.com/preview.png)](https://isstrapiready.com)
 
-## Build Setup
+# Is Strapi Ready?
 
-```bash
-# install dependencies
-$ yarn install
+[![Netlify Status][netlify-src]][netlify-href]
 
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
-
-## Special Directories
-
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+> Thanks this website you can follow the latest update for the next version of [Strapi](https://strapi.io).
 
 
-### `pages`
+## 🚀 Features
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+- Advancement % for the new version of Strapi
+- Plugin compatibility list
+- Review by Strapi Team & involved in this project
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+[🔖 &nbsp;Go to Is Strapi Ready?](https://isstrapiready.com/)
 
-### `plugins`
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+## Plugin compatibility Status
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+Each plugin as a status which provide several informations about its compabitility for the new version of Strapi.
 
-### `static`
+- `UNKNOWN`: We don't know if the plugin is compatible
+- `WIP`: Author of the plugin is working on a migration to the newest version
+- `READY`: You can use it
+- `UNSUPPORTED`: The plugin will not be supported for the new version of Strapi
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
+If you want to submit a plugin to the **Plugins Compatibility** list [see here](https://github.com/Stun3R/isstrapiready/issues/new?assignees=&labels=plugins&template=plugin-request.yml&title=%5BPLUGIN+REQUEST%5D+%3Ctitle%3E)
 
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
+## License
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
+[MIT License](./LICENSE)
 
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+<!-- Badges -->
+[netlify-src]: https://api.netlify.com/api/v1/badges/0d03061a-90f2-405a-9e01-b28fa4a76038/deploy-status
+[netlify-href]: #

@@ -238,7 +238,7 @@ export default {
   head() {
     const title = "Is Strapi v4 Ready?";
     const description =
-      "Discover the advancement of Strapi for v4 and the list of compatible plugins.";
+      "Discover the advancement of Strapi for v4 and the list of compatible plugins!";
 
     return {
       title,

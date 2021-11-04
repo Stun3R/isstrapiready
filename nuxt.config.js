@@ -79,6 +79,8 @@ export default {
     "@nuxtjs/tailwindcss",
     // https://pwa.nuxtjs.org
     "@nuxtjs/pwa",
+    // https://github.com/nuxt-community/netlify-files-module
+    "@nuxtjs/netlify-files",
     // https://github.com/nuxt-community/robots-module
     "@nuxtjs/robots",
     // https://sitemap.nuxtjs.org/fr
