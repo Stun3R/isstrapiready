@@ -4,10 +4,10 @@
     target="_blank"
     rel="noopener noreferrer"
     class="
+      flex flex-col
       w-full
       px-5
       py-[18px]
-      space-y-4
       bg-white
       rounded-lg
       shadow-sm
@@ -27,7 +27,7 @@
         class="w-5 h-5 my-auto -mt-px text-gray-400 transition-colors cursor-pointer  group-hover:text-white"
       />
     </div>
-    <div class="flex justify-between">
+    <div class="flex justify-between mt-auto">
       <p
         class="my-auto font-medium transition-colors  text-blueGray-500 group-hover:text-white"
       >

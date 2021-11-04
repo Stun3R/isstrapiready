@@ -13,7 +13,7 @@ export default {
   target: "static",
 
   loading: {
-    color: "#9A4BFF",
+    color: "#1f1d80",
   },
 
   publicRuntimeConfig: {
@@ -98,7 +98,7 @@ export default {
       name: "Is Strapi v4 Ready?",
       description:
         "Discover the advancement of Strapi for v4 and the list of compatible plugins",
-      theme_color: "#9A4BFF",
+      theme_color: "#1f1d80",
     },
   },
 
