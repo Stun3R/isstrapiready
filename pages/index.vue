@@ -37,7 +37,7 @@
               v-model="search"
               type="text"
               name="search"
-              class="w-full h-10 py-1 pl-4 pr-8 text-sm placeholder-gray-600 transition-colors rounded  dark:bg-purple-700 dark:text-white dark:placeholder-white outline-search search-shadow sm:w-60"
+              class="w-full h-10 py-1 pl-4 pr-8 text-sm placeholder-gray-600 transition-colors rounded  dark:bg-purple-900 dark:text-white dark:placeholder-white outline-search search-shadow sm:w-60"
               placeholder="Search"
             />
 
@@ -72,7 +72,7 @@
                   py-2.5
                   text-sm
                   bg-white
-                  dark:bg-purple-700 dark:text-white
+                  dark:bg-purple-900 dark:text-white
                   rounded
                   text-blueGray-500
                   search-shadow
@@ -92,7 +92,7 @@
                 <ul
                   v-if="visible.filter"
                   role="listbox"
-                  class="absolute left-0 z-10 p-2 text-sm bg-white rounded  dark:bg-purple-700 top-12 whitespace-nowrap search-shadow"
+                  class="absolute left-0 z-10 p-2 text-sm bg-white rounded shadow-md  dark:bg-purple-900 top-12 whitespace-nowrap"
                 >
                   <li
                     role="option"
@@ -144,7 +144,7 @@
                   py-2.5
                   transition-colors
                   bg-white
-                  dark:bg-purple-700 dark:text-white
+                  dark:bg-purple-900 dark:text-white
                   rounded
                   text-blueGray-500
                   search-shadow
@@ -165,7 +165,7 @@
                 <ul
                   v-if="visible.sort"
                   role="listbox"
-                  class="absolute left-0 right-0 z-10 p-2 text-gray-700 bg-white rounded  dark:bg-purple-700 dark:text-white top-12 search-shadow whitespace-nowrap"
+                  class="absolute left-0 right-0 z-10 p-2 text-gray-700 bg-white rounded shadow-md  dark:bg-purple-900 dark:text-white top-12 whitespace-nowrap"
                 >
                   <li
                     v-for="sort in SORTS"
