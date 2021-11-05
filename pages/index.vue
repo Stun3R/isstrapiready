@@ -37,7 +37,7 @@
               v-model="search"
               type="text"
               name="search"
-              class="w-full h-10 py-1 pl-4 pr-8 text-sm placeholder-gray-600 transition-colors rounded  dark:bg-purple-700 dark:text-white dark:placeholder-white outline-search dark:placeholder-gray-700 search-shadow sm:w-60"
+              class="w-full h-10 py-1 pl-4 pr-8 text-sm placeholder-gray-600 transition-colors rounded  dark:bg-purple-700 dark:text-white dark:placeholder-white outline-search search-shadow sm:w-60"
               placeholder="Search"
             />
 
