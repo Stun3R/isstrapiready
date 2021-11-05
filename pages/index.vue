@@ -2,8 +2,8 @@
   <div class="flex flex-col">
     <TheHeader />
 
-    <section class="container px-6 sm:px-8 xl:px-32 pt-14">
-      <h2 class="mb-3 ml-2 text-3xl font-bold">Overview</h2>
+    <section class="container px-6 mt-10 sm:px-8 md:px-10 xl:px-32">
+      <h2 class="mb-3 text-3xl font-bold">Overview</h2>
       <div
         class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 justify-items-center"
       >
@@ -24,7 +24,7 @@
       </div>
     </section>
 
-    <section class="container px-6 sm:px-8 md:px-10 xl:px-32 pt-14">
+    <section class="container px-6 sm:px-8 md:px-10 xl:px-32 mt-14">
       <div class="flex">
         <PuzzleIcon class="w-6 h-6 my-auto" />
         <h2 class="ml-2 text-3xl font-bold">Plugins</h2>
@@ -38,7 +38,7 @@
               v-model="search"
               type="text"
               name="search"
-              class="w-full h-10 py-1 pl-4 pr-8 text-sm rounded  search-shadow sm:w-60"
+              class="w-full h-10 py-1 pl-4 pr-8 text-sm placeholder-gray-600 transition-colors rounded  dark:placeholder-gray-700 search-shadow sm:w-60"
               placeholder="Search"
             />
 
@@ -59,9 +59,15 @@
 
           <!-- filter -->
           <div class="flex justify-between w-full">
-            <div class="relative my-auto cursor-pointer sm:ml-4 group">
+            <div
+              @blur="visible.filter = false"
+              class="relative my-auto cursor-pointer sm:ml-4 group"
+            >
               <button
-                @click="visible.filter = !visible.filter"
+                @click="
+                  visible.filter = !visible.filter;
+                  visible.sort = false;
+                "
                 @blur="visible.filter = false"
                 class="
                   flex
@@ -77,39 +83,49 @@
               >
                 Filters
                 <ChevronIcon
-                  class="w-5 h-5 my-auto ml-2 text-purple-500 rotate-180 fill-current stroke-current "
+                  :class="{
+                    'text-blueGray-500': visible.filter,
+                    'text-green-300': !visible.filter,
+                  }"
+                  class="w-5 h-5 my-auto ml-2 transition-colors rotate-180 fill-current stroke-current "
                 />
               </button>
-              <ul
-                role="listbox"
-                :class="{
-                  'opacity-0': !visible.filter,
-                  'opacity-100': visible.filter,
-                }"
-                class="absolute left-0 z-10 px-4 text-sm transition-opacity bg-white rounded-md shadow  top-12 whitespace-nowrap"
-              >
-                <li
-                  role="option"
-                  class="my-4 cursor-pointer"
-                  v-for="filter in FILTERS"
-                  :key="filter.name"
-                  @click="setFilter(filter)"
+              <transition name="fade">
+                <ul
+                  v-if="visible.filter"
+                  role="listbox"
+                  class="absolute left-0 z-10 p-2 text-sm bg-white rounded  top-12 whitespace-nowrap search-shadow"
                 >
-                  <input
-                    class="filter-checkbox"
-                    type="checkbox"
-                    name="type"
-                    :checked="filterBy.indexOf(filter) !== -1"
-                  />
-                  <label
-                    :class="`px-2 py-1 text-xs cursor-pointer font-semibold uppercase transition-colors tracking-widest rounded ${filterColor(
-                      filter.value
-                    )} `"
+                  <li
+                    role="option"
+                    class="
+                      flex
+                      px-2
+                      py-2
+                      cursor-pointer
+                      hover:bg-[#f5f8ff]
+                      rounded
+                    "
+                    v-for="filter in FILTERS"
+                    :key="filter.name"
+                    @click="setFilter(filter)"
                   >
-                    {{ filter.name }}
-                  </label>
-                </li>
-              </ul>
+                    <input
+                      class="my-auto filter-checkbox"
+                      type="checkbox"
+                      name="type"
+                      :checked="filterBy.indexOf(filter) !== -1"
+                    />
+                    <label
+                      :class="`px-2 py-1 text-xs cursor-pointer font-semibold uppercase transition-colors tracking-widest rounded ${filterColor(
+                        filter.value
+                      )} `"
+                    >
+                      {{ filter.name }}
+                    </label>
+                  </li>
+                </ul>
+              </transition>
             </div>
 
             <!-- sort -->
@@ -117,7 +133,10 @@
               class="relative justify-end inline-block my-auto ml-auto text-sm cursor-pointer "
             >
               <button
-                @click="visible.sort = !visible.sort"
+                @click="
+                  visible.sort = !visible.sort;
+                  visible.filter = false;
+                "
                 @blur="visible.sort = false"
                 class="
                   flex
@@ -134,37 +153,40 @@
               >
                 Sort by: {{ sortBy.name }}
                 <ChevronIcon
-                  class="w-5 h-5 my-auto ml-2 text-purple-500 rotate-180 fill-current stroke-current "
+                  :class="{
+                    'text-blueGray-500': visible.sort,
+                    'text-green-300': !visible.sort,
+                  }"
+                  class="w-5 h-5 my-auto ml-2 transition-colors rotate-180 fill-current stroke-current "
                 />
               </button>
-              <ul
-                role="listbox"
-                :class="{
-                  'opacity-0': !visible.sort,
-                  'opacity-100': visible.sort,
-                }"
-                class="absolute left-0 right-0 z-10 p-2 text-gray-700 transition-opacity bg-white rounded  top-12 search-shadow whitespace-nowrap"
-              >
-                <li
-                  v-for="sort in SORTS"
-                  :key="sort.name"
-                  @click="sortBy = sort"
-                  role="option"
-                  class="
-                    px-6
-                    py-2
-                    transition-colors
-                    cursor-pointer
-                    hover:bg-[#f5f8ff] hover:text-blueGray-500
-                    rounded
-                  "
-                  :class="{
-                    'bg-[#f5f8ff]': sort.name === sortBy.name,
-                  }"
+              <transition name="fade">
+                <ul
+                  v-if="visible.sort"
+                  role="listbox"
+                  class="absolute left-0 right-0 z-10 p-2 text-gray-700 bg-white rounded  top-12 search-shadow whitespace-nowrap"
                 >
-                  {{ sort.name }}
-                </li>
-              </ul>
+                  <li
+                    v-for="sort in SORTS"
+                    :key="sort.name"
+                    @click="setSortBy(sort)"
+                    role="option"
+                    class="
+                      px-6
+                      py-2
+                      transition-colors
+                      cursor-pointer
+                      hover:bg-[#f5f8ff] hover:text-blueGray-500
+                      rounded
+                    "
+                    :class="{
+                      'bg-[#f5f8ff]': sort.name === sortBy.name,
+                    }"
+                  >
+                    {{ sort.name }}
+                  </li>
+                </ul>
+              </transition>
             </div>
           </div>
         </div>
@@ -349,6 +371,10 @@ export default {
     },
   },
   methods: {
+    test() {
+      console.log("HERE");
+      this.visible.filter = false;
+    },
     filterColor(value) {
       switch (value) {
         case "unknown":
@@ -369,11 +395,26 @@ export default {
         this.filterBy.push(filter);
       }
     },
+    setSortBy(sort) {
+      this.sortBy = sort;
+      this.$nextTick(() => {
+        this.visible.sort = false;
+      });
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.fade-enter-active,
+.fade-leave-active {
+  @apply transition-opacity;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .search-shadow {
   box-shadow: 0px 1px 4px rgba(26, 26, 67, 0.1);
 }
@@ -384,7 +425,7 @@ export default {
     &:checked {
       background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
       border-color: transparent;
-      background-color: #9a4bff;
+      background-color: #1d1b84;
       background-size: 100% 100%;
       background-position: 50%;
       background-repeat: no-repeat;

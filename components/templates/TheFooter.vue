@@ -1,5 +1,7 @@
 <template>
-  <footer class="container px-6 py-6 mt-auto text-center sm:px-8 md:px-10">
+  <footer
+    class="container px-6 pt-10 pb-6 mt-auto text-center sm:px-8 md:px-10"
+  >
     Made with 💜 by <br class="block sm:hidden" />
     <a
       href="https://twitter.com/Stun3R_"

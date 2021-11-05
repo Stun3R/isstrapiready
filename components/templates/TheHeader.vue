@@ -11,7 +11,7 @@
         </h1>
       </nuxt-link>
       <h2
-        class="mt-3 text-purple-900 transition-colors  sm:text-xl dark:text-purple-100"
+        class="mt-3 text-purple-900 transition-colors  sm:text-xl dark:text-gray-100"
       >
         The future of Strapi is almost here
       </h2>
@@ -19,7 +19,7 @@
 
     <div class="flex items-center mt-2 space-x-2 sm:mt-0 sm:ml-auto">
       <a
-        class="w-6 h-6 transition-colors cursor-pointer  hover:text-strapi-purple-dark"
+        class="w-6 h-6 transition-all transform cursor-pointer  hover:scale-110 hover:text-strapi-purple-dark"
         href="https://github.com/Stun3R/isstrapiready"
         target="_blank"
         rel="noopener noreferrer"
@@ -27,7 +27,7 @@
         <GithubIcon />
       </a>
       <div
-        class="w-8 h-8 transition-colors cursor-pointer  hover:text-strapi-purple"
+        class="w-8 h-8 transition-all transform cursor-pointer  hover:text-strapi-purple hover:scale-110"
         @click="toggleDark()"
       >
         <template v-if="isDark">
