@@ -1,6 +1,8 @@
 <template>
   <article
     :class="`
+      md:p-6
+      sm:p-8
       p-6
       bg-gradient-to-br
       ${gradient}

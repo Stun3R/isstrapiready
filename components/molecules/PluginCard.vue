@@ -9,10 +9,12 @@
       px-5
       py-[18px]
       bg-white
+      dark:bg-purple-900
       rounded-lg
       plugin-shadow
       group
       hover:bg-purple-500
+      dark:hover:bg-purple-600
       transition-colors
       select-none
       min-h-[7rem]
@@ -20,16 +22,18 @@
   >
     <div class="flex justify-between">
       <h3
-        class="font-semibold text-purple-900 transition-colors  group-hover:text-white"
+        class="font-semibold text-purple-900 transition-colors  dark:text-white group-hover:text-white"
       >
         {{ name }}
       </h3>
       <LinkIcon
-        class="w-5 h-5 my-auto -mt-px text-gray-600 transition-colors cursor-pointer  group-hover:text-white"
+        class="w-5 h-5 my-auto -mt-px text-gray-600 transition-colors cursor-pointer  dark:text-gray-400 group-hover:text-white dark:group-hover:text-gray-400"
       />
     </div>
     <div class="flex justify-between mt-auto">
-      <p class="my-auto text-gray-700 transition-colors group-hover:text-white">
+      <p
+        class="my-auto text-gray-700 transition-colors  dark:text-gray-400 group-hover:text-white dark:group-hover:text-gray-400"
+      >
         {{ `@${author}` }}
       </p>
       <p

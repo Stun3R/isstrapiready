@@ -6,10 +6,12 @@
       py-[18px]
       space-y-4
       border-2 border-dashed border-purple-500
+      dark:border-purple-600
       hover:border-0
       rounded-lg
       group
       hover:bg-purple-500
+      dark:hover:bg-purple-600
       transition-colors
       select-none
       flex

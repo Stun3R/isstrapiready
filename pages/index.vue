@@ -13,21 +13,20 @@
           :percent="attributes.percent"
           :type="attributes.type"
           :title="attributes.title"
-          class="w-full max-w-sm"
+          class="w-full md:max-w-sm"
         />
         <AdvancementCard
           :percent="pluginAdvancement"
           type="plugins"
           title="Listed Plugins"
-          class="w-full max-w-sm"
+          class="w-full md:max-w-sm"
         />
       </div>
     </section>
 
     <section class="container px-6 sm:px-8 md:px-10 xl:px-32 mt-14">
       <div class="flex">
-        <PuzzleIcon class="w-6 h-6 my-auto" />
-        <h2 class="ml-2 text-3xl font-bold">Plugins</h2>
+        <h2 class="text-3xl font-bold">Plugins</h2>
       </div>
       <div class="mb-5">
         <!-- search -->
@@ -38,7 +37,7 @@
               v-model="search"
               type="text"
               name="search"
-              class="w-full h-10 py-1 pl-4 pr-8 text-sm placeholder-gray-600 transition-colors rounded  dark:placeholder-gray-700 search-shadow sm:w-60"
+              class="w-full h-10 py-1 pl-4 pr-8 text-sm placeholder-gray-600 transition-colors rounded  dark:bg-purple-700 dark:text-white dark:placeholder-white outline-search dark:placeholder-gray-700 search-shadow sm:w-60"
               placeholder="Search"
             />
 
@@ -47,34 +46,33 @@
               @click="search = ''"
               class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer "
             >
-              <CloseIcon class="w-4 h-4" />
+              <CloseIcon class="w-4 h-4 dark:text-white" />
             </div>
             <div
               v-show="search.length === 0"
               class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none "
             >
-              <SearchIcon class="w-4 h-4" />
+              <SearchIcon class="w-4 h-4 dark:text-white" />
             </div>
           </div>
 
           <!-- filter -->
           <div class="flex justify-between w-full">
-            <div
-              @blur="visible.filter = false"
-              class="relative my-auto cursor-pointer sm:ml-4 group"
-            >
+            <div class="relative my-auto cursor-pointer sm:ml-4 group">
               <button
                 @click="
                   visible.filter = !visible.filter;
                   visible.sort = false;
                 "
-                @blur="visible.filter = false"
                 class="
+                  hover:bg-gray-100
+                  transition-colors
                   flex
                   px-3
                   py-2.5
                   text-sm
                   bg-white
+                  dark:bg-purple-700 dark:text-white
                   rounded
                   text-blueGray-500
                   search-shadow
@@ -84,7 +82,7 @@
                 Filters
                 <ChevronIcon
                   :class="{
-                    'text-blueGray-500': visible.filter,
+                    'text-blueGray-500 dark:text-purple-400': visible.filter,
                     'text-green-300': !visible.filter,
                   }"
                   class="w-5 h-5 my-auto ml-2 transition-colors rotate-180 fill-current stroke-current "
@@ -94,7 +92,7 @@
                 <ul
                   v-if="visible.filter"
                   role="listbox"
-                  class="absolute left-0 z-10 p-2 text-sm bg-white rounded  top-12 whitespace-nowrap search-shadow"
+                  class="absolute left-0 z-10 p-2 text-sm bg-white rounded  dark:bg-purple-700 top-12 whitespace-nowrap search-shadow"
                 >
                   <li
                     role="option"
@@ -102,6 +100,7 @@
                       flex
                       px-2
                       py-2
+                      dark:hover:bg-purple-600 dark:hover:text-white
                       cursor-pointer
                       hover:bg-[#f5f8ff]
                       rounded
@@ -139,11 +138,13 @@
                 "
                 @blur="visible.sort = false"
                 class="
+                  hover:bg-gray-100
                   flex
                   px-3
                   py-2.5
                   transition-colors
                   bg-white
+                  dark:bg-purple-700 dark:text-white
                   rounded
                   text-blueGray-500
                   search-shadow
@@ -154,7 +155,7 @@
                 Sort by: {{ sortBy.name }}
                 <ChevronIcon
                   :class="{
-                    'text-blueGray-500': visible.sort,
+                    'text-blueGray-500 dark:text-purple-400': visible.sort,
                     'text-green-300': !visible.sort,
                   }"
                   class="w-5 h-5 my-auto ml-2 transition-colors rotate-180 fill-current stroke-current "
@@ -164,7 +165,7 @@
                 <ul
                   v-if="visible.sort"
                   role="listbox"
-                  class="absolute left-0 right-0 z-10 p-2 text-gray-700 bg-white rounded  top-12 search-shadow whitespace-nowrap"
+                  class="absolute left-0 right-0 z-10 p-2 text-gray-700 bg-white rounded  dark:bg-purple-700 dark:text-white top-12 search-shadow whitespace-nowrap"
                 >
                   <li
                     v-for="sort in SORTS"
@@ -176,11 +177,13 @@
                       py-2
                       transition-colors
                       cursor-pointer
+                      dark:hover:bg-purple-600 dark:hover:text-white
                       hover:bg-[#f5f8ff] hover:text-blueGray-500
                       rounded
                     "
                     :class="{
-                      'bg-[#f5f8ff]': sort.name === sortBy.name,
+                      'bg-[#f5f8ff] dark:bg-purple-600':
+                        sort.name === sortBy.name,
                     }"
                   >
                     {{ sort.name }}
@@ -406,6 +409,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.outline-search {
+  outline-color: #1d1b84 !important;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   @apply transition-opacity;
@@ -417,6 +424,13 @@ export default {
 
 .search-shadow {
   box-shadow: 0px 1px 4px rgba(26, 26, 67, 0.1);
+}
+.dark .filter {
+  &-checkbox {
+    &:checked {
+      background-color: #ad78ff;
+    }
+  }
 }
 
 .filter {
