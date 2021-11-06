@@ -5,11 +5,13 @@
       px-5
       py-[18px]
       space-y-4
-      border-2 border-dashed border-strapi-purple
+      border-2 border-dashed border-purple-500
+      dark:border-purple-600
       hover:border-0
       rounded-lg
       group
-      hover:bg-strapi-purple-light
+      hover:bg-purple-500
+      dark:hover:bg-purple-600
       transition-colors
       select-none
       flex
@@ -20,8 +22,7 @@
     rel="noopener noreferrer"
   >
     <div class="m-auto text-center group-hover:text-white">
-      <p class="mb-2 font-medium">Want to add your plugins to the list?</p>
-      <span>Click here</span>
+      <p class="font-semibold">Add your plugin to the list</p>
     </div>
   </a>
 </template>

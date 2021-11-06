@@ -26,11 +26,6 @@ export default {
     htmlAttrs: {
       lang: "en",
     },
-    bodyAttrs: {
-      class: [
-        "bg-gray-50 dark:bg-gray-900 text-gray-500 font-body dark:text-white transition-colors min-h-screen",
-      ],
-    },
     meta: [
       { hid: "charset", charset: "utf-8" },
       {

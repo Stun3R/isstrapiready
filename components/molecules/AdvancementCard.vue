@@ -1,6 +1,8 @@
 <template>
   <article
     :class="`
+      md:p-6
+      sm:p-8
       p-6
       bg-gradient-to-br
       ${gradient}
@@ -47,21 +49,21 @@ export default {
     gradient() {
       switch (this.type) {
         case "documentation":
-          return "from-strapi-purple-light to-strapi-purple";
+          return "bg-purple-400";
         case "codebase":
-          return "from-strapi-green-light to-strapi-green";
+          return "bg-green-400";
         case "plugins":
-          return "from-strapi-blue-light to-strapi-blue";
+          return "bg-cyan-400";
       }
     },
     color() {
       switch (this.type) {
         case "documentation":
-          return "bg-strapi-purple-dark";
+          return "bg-purple-500";
         case "codebase":
-          return "bg-strapi-green-dark";
+          return "bg-green-500";
         case "plugins":
-          return "bg-strapi-blue-dark";
+          return "bg-cyan-500";
       }
     },
   },
