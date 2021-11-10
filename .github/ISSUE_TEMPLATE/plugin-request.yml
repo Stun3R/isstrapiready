@@ -19,7 +19,7 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: plugin-state
+    id: plugin-status
     attributes:
       label: Status
       description: "Tell us if your plugin is either ready to use in v4 or unsupported. If it is in progress or you don't know, tell us anyway"
