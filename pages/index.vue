@@ -238,7 +238,7 @@
           :name="attributes.name"
           :author="attributes.author"
           :link="attributes.link"
-          :state="attributes.state"
+          :status="attributes.status"
         />
       </div>
     </section>
@@ -253,22 +253,22 @@ import _ from "lodash";
 const FILTERS = [
   {
     name: "unknown",
-    key: "state",
+    key: "status",
     value: "unknown",
   },
   {
     name: "wip",
-    key: "state",
+    key: "status",
     value: "wip",
   },
   {
     name: "ready",
-    key: "state",
+    key: "status",
     value: "ready",
   },
   {
     name: "unsupported",
-    key: "state",
+    key: "status",
     value: "unsupported",
   },
 ];
@@ -364,7 +364,7 @@ export default {
     pluginAdvancement() {
       const count = this.plugins.data.reduce(
         (count, plugin) =>
-          plugin.attributes.state === "ready" ? ++count : count,
+          plugin.attributes.status === "ready" ? ++count : count,
         0
       );
 
@@ -374,10 +374,6 @@ export default {
     },
   },
   methods: {
-    test() {
-      console.log("HERE");
-      this.visible.filter = false;
-    },
     filterColor(value) {
       switch (value) {
         case "unknown":

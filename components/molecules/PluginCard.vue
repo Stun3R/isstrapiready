@@ -37,9 +37,9 @@
         {{ `@${author}` }}
       </p>
       <p
-        :class="`px-2 py-1 text-sm font-semibold uppercase transition-colors rounded tracking-widest ${stateColor}`"
+        :class="`px-2 py-1 text-sm font-semibold uppercase transition-colors rounded tracking-widest ${statusColor}`"
       >
-        {{ state }}
+        {{ status }}
       </p>
     </div>
   </a>
@@ -60,14 +60,14 @@ export default {
       type: String,
       default: "",
     },
-    state: {
+    status: {
       type: String,
       default: "unknown",
     },
   },
   computed: {
-    stateColor() {
-      switch (this.state) {
+    statusColor() {
+      switch (this.status) {
         case "unknown":
           return "bg-gray-200 text-gray-700";
         case "wip":
