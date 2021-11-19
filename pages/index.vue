@@ -3,6 +3,7 @@
     <TheHeader />
 
     <section class="container px-6 mt-10 sm:px-8 md:px-10 xl:px-32">
+      <ReleaseAlert class="mb-10" />
       <h2 class="mb-3 text-3xl font-bold">Overview</h2>
       <div
         class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 justify-items-center"
