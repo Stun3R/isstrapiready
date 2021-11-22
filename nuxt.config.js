@@ -108,6 +108,7 @@ export default {
       );
 
       const plugins = await axios.get(`${process.env.STRAPI_URL}/plugins`);
+      const versions = await axios.get(`${process.env.STRAPI_URL}/versions`);
 
       return [
         {
@@ -115,6 +116,7 @@ export default {
           payload: {
             advancements: advancements.data,
             plugins: plugins.data,
+            version: versions.data.data[0]
           },
         },
       ];
