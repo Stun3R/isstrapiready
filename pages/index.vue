@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col">
-    <TheHeader :versions="versions.attributes.latest" />
+    <TheHeader :versions="version.attributes.latest" />
 
     <section class="container px-6 mt-10 sm:px-8 md:px-10 xl:px-32">
       <ReleaseAlert
-        v-if="versions.attributes.release"
-        :name="versions.attributes.name"
+        v-if="version.attributes.release"
+        :name="version.attributes.name"
         class="mb-10"
       />
       <h2 class="mb-3 text-3xl font-bold">Overview</h2>
@@ -308,7 +308,7 @@ export default {
       return {
         advancements: advancementsResponse.data,
         plugins: pluginsResponse.data,
-        versions: versions.data.data[0],
+        version: versions.data.data[0],
       };
     }
   },

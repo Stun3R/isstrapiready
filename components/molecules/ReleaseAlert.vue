@@ -9,21 +9,19 @@
           <p class="ml-3 font-medium text-white truncate">
             <span class="lg:hidden"> Strapi {{ name }} is released!</span>
             <span class="hidden lg:inline">
-              Big news! We're excited to announce you that Strapi {{ name }} is released.
+              Big news! We're excited to announce you that Strapi
+              {{ name }} is released.
             </span>
           </p>
         </div>
-        <div
-          class="flex-shrink-0 w-full mt-2 sm:mt-0 sm:w-auto"
-        >
+        <div class="flex-shrink-0 w-full mt-2 sm:mt-0 sm:w-auto">
           <a
             href="#"
-            class="flex items-center justify-center px-4 py-2 text-sm font-medium text-purple-500 bg-white border border-transparent rounded-md shadow-sm hover:bg-gray-100"
+            class="flex items-center justify-center px-4 py-2 text-sm font-medium text-purple-500 bg-white border border-transparent rounded-md shadow-sm  hover:bg-gray-100"
           >
             Learn more
           </a>
         </div>
-      </div>
       </div>
     </div>
   </div>
