@@ -3,13 +3,20 @@
     class="container flex flex-col px-6 pt-8  sm:px-8 xl:px-32 xl:pt-14 sm:flex-row"
   >
     <div>
-      <nuxt-link to="/">
-        <h1 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
-          Is
-          <span class="text-purple-500 dark:text-purple-400">Strapi v4</span>
-          ready?
-        </h1>
-      </nuxt-link>
+      <div class="flex">
+        <nuxt-link to="/">
+          <h1 class="mr-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
+            Is
+            <span class="text-purple-500 dark:text-purple-400">Strapi v4</span>
+            ready?
+          </h1>
+        </nuxt-link>
+        <span
+          class="px-2 py-1 my-auto text-xs font-bold text-purple-500 bg-purple-100 rounded "
+        >
+          v {{ versions }}
+        </span>
+      </div>
       <h2
         class="mt-3 text-purple-900 transition-colors  sm:text-xl dark:text-gray-100"
       >
@@ -43,6 +50,12 @@
 
 <script>
 export default {
+  props: {
+    versions: {
+      type: String,
+      default: "",
+    },
+  },
   methods: {
     toggleDark() {
       this.$colorMode.preference =
