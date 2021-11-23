@@ -1,8 +1,13 @@
 <template>
   <div class="flex flex-col">
-    <TheHeader />
+    <TheHeader :versions="version.attributes.latest" />
 
     <section class="container px-6 mt-10 sm:px-8 md:px-10 xl:px-32">
+      <ReleaseAlert
+        v-if="version.attributes.release"
+        :name="version.attributes.name"
+        class="mb-10"
+      />
       <h2 class="mb-3 text-3xl font-bold">Overview</h2>
       <div
         class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 justify-items-center"
@@ -297,11 +302,13 @@ export default {
       const advancementsResponse = await axios.get(
         `${$config.strapiURL}/advancements`
       );
+      const versions = await axios.get(`${$config.strapiURL}/versions`);
 
       const pluginsResponse = await axios.get(`${$config.strapiURL}/plugins`);
       return {
         advancements: advancementsResponse.data,
         plugins: pluginsResponse.data,
+        version: versions.data.data[0],
       };
     }
   },
