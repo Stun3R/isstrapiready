@@ -14,7 +14,7 @@
         <span
           class="px-2 py-1 my-auto text-xs font-bold text-purple-500 bg-purple-100 rounded "
         >
-          v {{ versions }}
+          v{{ versions }}
         </span>
       </div>
       <h2
