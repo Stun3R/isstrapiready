@@ -1,6 +1,6 @@
 <template>
   <header
-    class="container flex flex-col px-6 pt-8  sm:px-8 xl:px-32 xl:pt-14 sm:flex-row"
+    class="container flex flex-col px-6 pt-8  sm:px-8 xl:px-32 xl:pt-14 md:flex-row"
   >
     <div>
       <div class="flex">
@@ -12,7 +12,7 @@
           </h1>
         </nuxt-link>
         <span
-          class="px-2 py-1 my-auto text-xs font-bold text-purple-500 bg-purple-100 rounded "
+          class="px-2 py-1 mt-2 mb-auto ml-auto text-xs font-bold text-purple-500 bg-purple-100 rounded  sm:mb-auto sm:mt-auto sm:my-auto whitespace-nowrap"
         >
           v{{ versions }}
         </span>
@@ -24,7 +24,7 @@
       </h2>
     </div>
 
-    <div class="flex items-center mt-2 space-x-2 sm:mt-0 sm:ml-auto">
+    <div class="flex items-center mt-2 space-x-2 md:mt-0 md:ml-auto">
       <a
         class="w-6 h-6 transition-all transform cursor-pointer  hover:scale-110 hover:text-strapi-purple-dark"
         href="https://github.com/Stun3R/isstrapiready"
