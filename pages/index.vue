@@ -6,6 +6,7 @@
       <ReleaseAlert
         v-if="version.attributes.release"
         :name="version.attributes.name"
+        :link="version.attributes.announce"
         class="mb-10"
       />
       <h2 class="mb-3 text-3xl font-bold">Overview</h2>
