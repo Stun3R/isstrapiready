@@ -4,7 +4,7 @@
 
     <section class="container px-6 mt-10 sm:px-8 md:px-10 xl:px-32">
       <ReleaseAlert
-        v-if="version.attributes.release"
+        v-if="version.attributes.released"
         :name="version.attributes.name"
         :link="version.attributes.announce"
         class="mb-10"
