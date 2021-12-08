@@ -1,28 +1,27 @@
-name: "🧩 Plugin request"
-description: Ask us to add your plugin to the list
-title: "[PLUGIN REQUEST] <title>"
-labels: [plugins]
+name: "🧩 Plugin/Provider request"
+description: Ask us to add your plugin/provider to the list
+title: "[PLUGIN/PROVIDER REQUEST] <title>"
 body:
   - type: input
-    id: plugin-name
+    id: name
     attributes:
       label: Name
-      description: "Name of your plugin as it is used to install it"
+      description: "Name of your plugin/provider as it is used to install it"
       placeholder: "Example: strapi-plugin-json-schema"
     validations:
       required: true
   - type: input
-    id: plugin-link
+    id: link
     attributes:
       label: Link
-      description: "Please provide a link where we can find your plugin, it can be `Github` or `NPM`"
+      description: "Please provide a link where we can find your plugin/provider, it can be `Github` or `NPM`"
     validations:
       required: true
   - type: dropdown
-    id: plugin-status
+    id: status
     attributes:
       label: Status
-      description: "Tell us if your plugin is either ready to use in v4 or unsupported. If it is in progress or you don't know, tell us anyway"
+      description: "Tell us if your plugin/provider is either ready to use in v4 or unsupported. If it is in progress or you don't know, tell us anyway"
       options:
       - Unknown
       - Work In Progess
@@ -30,9 +29,19 @@ body:
       - Unsupported
     validations:
       required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      description: "Is this a `Plugin` or a `Provider`"
+      options:
+      - Plugin
+      - Provider
+    validations:
+      required: true
   - type: input
-    id: plugin-author
+    id: author
     attributes:
       label: Author
-      description: "Even if you are not the author of this plugin, please give us his Github name so we can contact it"
+      description: "Even if you are not the author of this plugin/provider, please give us his Github name so we can contact it"
       placeholder: "Example: @Stun3R"
