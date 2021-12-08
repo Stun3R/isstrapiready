@@ -33,7 +33,7 @@ body:
     id: type
     attributes:
       label: Type
-      description: "Is this a `Plugin` or a `Provider`"
+      description: "Is this a `Plugin` or a `Provider`?"
       options:
       - Plugin
       - Provider
