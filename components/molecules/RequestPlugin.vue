@@ -22,7 +22,7 @@
     rel="noopener noreferrer"
   >
     <div class="m-auto text-center group-hover:text-white">
-      <p class="font-semibold">Add your plugin to the list</p>
+      <p class="font-semibold">Add your plugin/provider to the list</p>
     </div>
   </a>
 </template>
