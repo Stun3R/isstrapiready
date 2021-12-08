@@ -17,7 +17,7 @@
       flex
       min-h-[7rem]
     "
-    href="https://github.com/Stun3R/isstrapiready/issues/new?assignees=&labels=plugins&template=plugin-request.yml&title=%5BPLUGIN+REQUEST%5D+%3Ctitle%3E"
+    href="https://github.com/Stun3R/isstrapiready/issues/new?assignees=&template=plugin-request.yml&title=%5BPLUGIN/PROVIDER+REQUEST%5D+%3Ctitle%3E"
     target="_blank"
     rel="noopener noreferrer"
   >
