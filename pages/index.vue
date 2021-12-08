@@ -161,7 +161,7 @@
                   "
                 >
                   Types
-                  <span class="hidden md:block">
+                  <span class="truncate md:max-w-[2rem] lg:max-w-none">
                     : {{ filterTypesBy.name }}
                   </span>
                   <ChevronIcon
