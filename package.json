@@ -11,11 +11,11 @@
   "dependencies": {
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
-    "axios": "^0.24.0",
     "core-js": "^3.15.1",
     "easy-circular-progress": "^1.0.4",
     "lodash": "^4.17.21",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "strapi-sdk-js": "^2.1.1"
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "^2.1.1",

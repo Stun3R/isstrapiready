@@ -388,19 +388,23 @@ const SORTS = [
   },
 ];
 export default {
-  async asyncData({ payload, $config }) {
+  async asyncData({ payload, app }) {
     if (payload) return { ...payload };
     else {
-      const advancementsResponse = await axios.get(
-        `${$config.strapiURL}/advancements`
-      );
-      const versions = await axios.get(`${$config.strapiURL}/versions`);
+      const advancements = await app.$strapi.find("advancements");
 
-      const pluginsResponse = await axios.get(`${$config.strapiURL}/plugins`);
+      const versions = await app.$strapi.find("versions");
+
+      const plugins = await app.$strapi.find("plugins", {
+        pagination: {
+          limit: -1,
+        },
+      });
+
       return {
-        advancements: advancementsResponse.data,
-        plugins: pluginsResponse.data,
-        version: versions.data.data[0],
+        advancements,
+        plugins,
+        version: versions.data[0],
       };
     }
   },
