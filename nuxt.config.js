@@ -103,20 +103,23 @@ export default {
     crawler: true,
     fallback: true,
     routes: async () => {
-      const advancements = await axios.get(
-        `${process.env.STRAPI_URL}/advancements`
-      );
+      const advancements = await app.$strapi.find("advancements");
 
-      const plugins = await axios.get(`${process.env.STRAPI_URL}/plugins`);
-      const versions = await axios.get(`${process.env.STRAPI_URL}/versions`);
+      const versions = await app.$strapi.find("versions");
+
+      const plugins = await app.$strapi.find("plugins", {
+        pagination: {
+          limit: -1,
+        },
+      });
 
       return [
         {
           route: "/",
           payload: {
-            advancements: advancements.data,
-            plugins: plugins.data,
-            version: versions.data.data[0],
+            advancements,
+            plugins,
+            version: versions.data[0],
           },
         },
       ];
