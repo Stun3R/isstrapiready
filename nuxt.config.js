@@ -56,7 +56,7 @@ export default {
   css: ["~/assets/css/poppins.css", "~/assets/css/main.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ["~/plugins/strapi"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
@@ -116,7 +116,7 @@ export default {
           payload: {
             advancements: advancements.data,
             plugins: plugins.data,
-            version: versions.data.data[0]
+            version: versions.data.data[0],
           },
         },
       ];
