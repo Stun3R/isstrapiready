@@ -1,4 +1,4 @@
-import axios from "axios";
+import Strapi from "strapi-sdk-js";
 const url = "https://isstrapiready.com";
 
 export default {
@@ -103,11 +103,16 @@ export default {
     crawler: true,
     fallback: true,
     routes: async () => {
-      const advancements = await app.$strapi.find("advancements");
+      const strapi = new Strapi({
+        url: process.env.STRAPI_URL,
+        prefix: "v1",
+      });
 
-      const versions = await app.$strapi.find("versions");
+      const advancements = await strapi.find("advancements");
 
-      const plugins = await app.$strapi.find("plugins", {
+      const versions = await strapi.find("versions");
+
+      const plugins = await strapi.find("plugins", {
         pagination: {
           limit: -1,
         },
